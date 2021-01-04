@@ -53,7 +53,7 @@ void MODFX_PROCESS(const float *main_xn, float *main_yn,
     
     switch (s_saturator) {
     case tanh_alt:
-      sat = s_sat.tanh(s_param_z, s_param);
+      sat = s_sat.tanh_alt(s_param_z, s_param);
       break;
       
     case sigmoid_bipolar:
