@@ -43,13 +43,14 @@ namespace vivsexion {
      * Get value of tanh transform of one sample 
 	 *
      * @param xn  Input sample
+	 * @param drive Input drive (gain)
      *
      * @return Output sample
      */
     inline __attribute__((optimize("Ofast"),always_inline))
-    float tanh_alt(const float xn, const float gain) 
+    float tanh_alt(const float xn, const float drive) 
     {
-      const float y = xn * gain;
+      const float y = xn * drive;
       return (2 / (1 + exp(-2*y)) - 1);
     }
 
@@ -57,13 +58,14 @@ namespace vivsexion {
      * Get value of sigmoid bipolar transform of one sample 
 	 *
      * @param xn  Input sample
+	 * @param drive Input drive (gain)
      *
      * @return Output sample
      */
     inline __attribute__((optimize("Ofast"),always_inline))
-    float sigmoid_bipolar(const float xn, const float gain) 
+    float sigmoid_bipolar(const float xn, const float drive) 
     {
-      const float y = xn * gain;
+      const float y = xn * drive;
       return (1 - exp(-y)) / (1 + exp(-y));
     }
 
@@ -71,13 +73,14 @@ namespace vivsexion {
      * Get value of hard clipping transform of one sample 
 	 *
      * @param xn  Input sample
+	 * @param drive Input drive (gain)
      *
      * @return Output sample
      */
     inline __attribute__((optimize("Ofast"),always_inline))
-    float hard_clip(const float xn, const float gain) 
+    float hard_clip(const float xn, const float drive) 
     {
-      const float y = xn * gain;
+      const float y = xn * drive;
 	  if (y > 1.0f) {
 	    return 1.0f;
 	  } else if (y < -1.0f) {
