@@ -36,45 +36,47 @@ void MODFX_PROCESS(const float *main_xn, float *main_yn,
                    const float *sub_xn,  float *sub_yn,
                    uint32_t frames)
 {
+  const float * mx = main_xn;   
   float * __restrict my = main_yn;
   const float * my_e = my + 2*frames;
   float * __restrict sy = sub_yn;
 
-  const float p = s_param;
-  float p_z = s_param_z;
+  float sigOutL;                 // Signal output value L ch
+  float sigOutR;                 // Signal output value R ch
+  float sigInL;                  // Signal input value L ch
+  float sigInR;                  // Signal input value R ch
   
   for (; my != my_e; ) {
 
-    p_z = linintf(0.002f, p_z, p);
-    
-    // s_lfo.cycle();
-
-    float sat;
+    sigInL = (*mx++);
+	sigInR = (*mx++);
     
     switch (s_saturator) {
     case tanh:
-      sat = s_sat.tanh_alt(s_param_z, s_param);
+      sigOutL = s_sat.tanh_alt(sigInL, s_param);
+	  sigOutR = s_sat.tanh_alt(sigInR, s_param);
       break;
       
     case sigmoid:
-      sat = s_sat.sigmoid_bipolar(s_param_z, s_param);
+      sigOutL = s_sat.sigmoid_bipolar(sigInL, s_param);
+	  sigOutR = s_sat.sigmoid_bipolar(sigInR, s_param);
       break;
       
     case hard:
-      sat = s_sat.hard_clip(s_param_z, s_param);
+      sigOutL = s_sat.hard_clip(sigInL, s_param);
+	  sigOutR = s_sat.hard_clip(sigInR, s_param);
       break;
     }
     
     // Scale down the wave, full swing is way too loud. (polyphony headroom)
     // wave *= 0.1f;
     
-    *(my++) = sat;
-    *(my++) = sat;
-    *(sy++) = sat;
-    *(sy++) = sat;
+    *(my++) = sigOutL;
+    *(my++) = sigOutR;
+    // *(sy++) = sat;
+    // *(sy++) = sat;
   }
 
-  s_param_z = p_z;
 }
 
 
