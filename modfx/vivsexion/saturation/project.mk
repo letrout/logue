@@ -2,11 +2,11 @@
 # Project Customization
 # #############################################################################
 
-PROJECT = saturation
+PROJECT = sexion_saturation
 
 UCSRC = 
 
-UCXXSRC = saturation.cpp
+UCXXSRC = ./src/saturation.cpp
 
 UINCDIR =
 
