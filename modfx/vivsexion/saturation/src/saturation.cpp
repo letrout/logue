@@ -16,9 +16,9 @@
 static vivsexion::Saturation s_sat;
 
 enum {
-  tanh_alt,
-  sigmoid_bipolar,
-  hard_clip,
+  tanh,
+  sigmoid,
+  hard,
   saturator_count
 };
 
@@ -52,15 +52,15 @@ void MODFX_PROCESS(const float *main_xn, float *main_yn,
     float sat;
     
     switch (s_saturator) {
-    case tanh_alt:
+    case tanh:
       sat = s_sat.tanh_alt(s_param_z, s_param);
       break;
       
-    case sigmoid_bipolar:
+    case sigmoid:
       sat = s_sat.sigmoid_bipolar(s_param_z, s_param);
       break;
       
-    case hard_clip:
+    case hard:
       sat = s_sat.hard_clip(s_param_z, s_param);
       break;
     }
