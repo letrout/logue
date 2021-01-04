@@ -31,9 +31,7 @@ namespace vivsexion {
     /**
      * Default constructor
      */
-    Saturation(void) :
-      
-    { }
+    Saturation(void) = default;
       
     /*===========================================================================*/
     /* Public Methods.                                                           */
@@ -84,7 +82,7 @@ namespace vivsexion {
 	  if (y > 1.0f) {
 	    return 1.0f;
 	  } else if (y < -1.0f) {
-	    return -1f;
+	    return -1.0f;
 	  } else {
 	    return y;
 	  }
