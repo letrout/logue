@@ -77,7 +77,6 @@ namespace vivsexion {
     inline __attribute__((optimize("Ofast"),always_inline))
     float hard_clip(const float xn, const float gain) 
     {
-	  float out;
       const float y = xn * gain;
 	  if (y > 1.0f) {
 	    return 1.0f;
