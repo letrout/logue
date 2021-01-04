@@ -8,7 +8,7 @@ UCSRC =
 
 UCXXSRC = ./src/saturation.cpp
 
-UINCDIR =
+UINCDIR = ./src/saturation.hpp
 
 UDEFS =
 
