@@ -23,8 +23,9 @@ enum {
 };
 
 static uint8_t s_saturator;
-static float s_param_z, s_param;
-static const float s_fs_recip = 1.f / 48000.f;
+static float s_param;
+static const float s_min_drive = 1.f;
+static const float s_max_drive = 8.f;
 
 void MODFX_INIT(uint32_t platform, uint32_t api)
 {
@@ -88,7 +89,7 @@ void MODFX_PARAM(uint8_t index, int32_t value)
     s_saturator = si_roundf(valf * (saturator_count - 1));
     break;
   case k_user_modfx_param_depth:
-    s_param = valf;
+    s_param = valf * valf * (s_max_drive - s_min_drive) + s_min_drive;
     break;
   default:
     break;
