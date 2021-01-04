@@ -49,7 +49,7 @@ namespace vivsexion {
      * @return Output sample
      */
     inline __attribute__((optimize("Ofast"),always_inline))
-    float tanh(const float xn, const float gain) 
+    float tanh_alt(const float xn, const float gain) 
     {
       const float y = xn * gain;
       return (2 / (1 + exp(-2*y)) - 1);
