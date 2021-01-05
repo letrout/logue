@@ -82,13 +82,13 @@ namespace vivsexion {
     float hard_clip(const float xn, const float drive) 
     {
       const float y = xn * drive;
-	  if (y > 1.0f) {
-	    return 1.0f;
-	  } else if (y < -1.0f) {
-	    return -1.0f;
-	  } else {
-	    return y;
-	  }
+      if (y > 1.0f) {
+        return 1.0f;
+      } else if (y < -1.0f) {
+        return -1.0f;
+      } else {
+        return y;
+      }
     }
       
   };
