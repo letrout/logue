@@ -50,8 +50,9 @@ namespace vivsexion {
     inline __attribute__((optimize("Ofast"),always_inline))
     float tanh_alt(const float xn, const float drive) 
     {
+      // return (fastertanhf(xn * drive))
       const float y = xn * drive;
-      return (2 / (1 + exp(-2*y)) - 1);
+      return (2 / (1 + fasterexpf(-2*y)) - 1);
     }
 
     /**
