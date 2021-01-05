@@ -10,12 +10,14 @@
  */
 
 #include "usermodfx.h"
+#include "fx_api.h"
 
 #include "saturation.hpp"
 
 static vivsexion::Saturation s_sat;
 
 enum {
+  schetzen,
   tanh_alt,
   sigmoid,
   hard,
@@ -53,6 +55,10 @@ void MODFX_PROCESS(const float *main_xn, float *main_yn,
 	sigInR = (*mx++);
     
     switch (s_saturator) {
+    case schetzen:
+      sigOutL = fx_sat_schetzenf(sigInL);
+	  sigOutR = fx_sat_schetzenf(sigInR);
+      break;
     case tanh_alt:
       sigOutL = s_sat.tanh_alt(sigInL, s_drive);
 	  sigOutR = s_sat.tanh_alt(sigInR, s_drive);
