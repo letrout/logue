@@ -66,7 +66,7 @@ namespace vivsexion {
     float sigmoid_bipolar(const float xn, const float drive) 
     {
       const float y = xn * drive;
-      return (1 - exp(-y)) / (1 + exp(-y));
+      return (1 - fasterexpf(-y)) / (1 + fasterexpf(-y));
     }
 
     /**
