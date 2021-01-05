@@ -52,26 +52,26 @@ void MODFX_PROCESS(const float *main_xn, float *main_yn,
   for (; my != my_e; ) {
 
     sigInL = (*mx++);
-	sigInR = (*mx++);
+    sigInR = (*mx++);
     
     switch (s_saturator) {
     case schetzen:
       sigOutL = fx_sat_schetzenf(sigInL);
-	  sigOutR = fx_sat_schetzenf(sigInR);
+      sigOutR = fx_sat_schetzenf(sigInR);
       break;
     case tanh_alt:
       sigOutL = s_sat.tanh_alt(sigInL, s_drive);
-	  sigOutR = s_sat.tanh_alt(sigInR, s_drive);
+      sigOutR = s_sat.tanh_alt(sigInR, s_drive);
       break;
       
     case sigmoid:
       sigOutL = s_sat.sigmoid_bipolar(sigInL, s_drive);
-	  sigOutR = s_sat.sigmoid_bipolar(sigInR, s_drive);
+      sigOutR = s_sat.sigmoid_bipolar(sigInR, s_drive);
       break;
       
     case hard:
       sigOutL = s_sat.hard_clip(sigInL, s_drive);
-	  sigOutR = s_sat.hard_clip(sigInR, s_drive);
+      sigOutR = s_sat.hard_clip(sigInR, s_drive);
       break;
     }
     
