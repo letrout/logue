@@ -41,9 +41,9 @@ namespace vivsexion {
 
     /**
      * Get value of tanh transform of one sample 
-	 *
+     *
      * @param xn  Input sample
-	 * @param drive Input drive (gain)
+     * @param drive Input drive (gain)
      *
      * @return Output sample
      */
@@ -57,9 +57,9 @@ namespace vivsexion {
 
     /**
      * Get value of sigmoid bipolar transform of one sample 
-	 *
+     *
      * @param xn  Input sample
-	 * @param drive Input drive (gain)
+     * @param drive Input drive (gain)
      *
      * @return Output sample
      */
