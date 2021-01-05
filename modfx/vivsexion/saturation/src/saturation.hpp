@@ -72,15 +72,16 @@ namespace vivsexion {
 
     /**
      * Get value of hard clipping transform of one sample 
-	 *
+     *
      * @param xn  Input sample
-	 * @param drive Input drive (gain)
+     * @param drive Input drive (gain)
      *
      * @return Output sample
      */
     inline __attribute__((optimize("Ofast"),always_inline))
     float hard_clip(const float xn, const float drive) 
     {
+      /*
       const float y = xn * drive;
       if (y > 1.0f) {
         return 1.0f;
@@ -89,6 +90,8 @@ namespace vivsexion {
       } else {
         return y;
       }
+      */
+      return clip1m1f(xn * drive);
     }
       
   };
